@@ -68,5 +68,20 @@ let pAequorFactory = (orgNum, dna) => {
 
 //console.log(pAequorFactory(1, mockUpStrand()).compareDNA(pAequorFactory(2, mockUpStrand())));
 
-console.log(pAequorFactory(1, mockUpStrand()).willLikelySurvive());
+//console.log(pAequorFactory(1, mockUpStrand()).willLikelySurvive());
+
+const fittestAequor = [];
+let orgNumCounter = 1;
+
+while (fittestAequor.length < 30) {
+  let newOrg = pAequorFactory(orgNumCounter, mockUpStrand());
+  if (newOrg.willLikelySurvive()) {
+    fittestAequor.push(newOrg);
+  }
+  orgNumCounter++;
+}
+
+console.log(fittestAequor);
+
+
 
