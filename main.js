@@ -35,11 +35,21 @@ let pAequorFactory = (orgNum, dna) => {
       this.dna[randomIndex] = newBase;
       return this.dna;
     },
+    compareDNA(otherOrg){
+      let commonBases = 0;
 
+      for (let i = 0 ; i < this.dna.length; i++){
+          if (dna[i] === otherOrg.dna[i]){
+            commonBases += 1;
+          } 
+      }
+      commonBases = (commonBases / this.dna.length) * 100;
+      return `Specimen #${this.orgNum} and specimen #${otherOrg.orgNum} have ${commonBases.toFixed(2)}% DNA in common`;
+    }
   }
 }
 
 //console.log(pAequorFactory(1, mockUpStrand()).mutate());
 
-
+console.log(pAequorFactory(1, mockUpStrand()).compareDNA(pAequorFactory(2, mockUpStrand())));
 
