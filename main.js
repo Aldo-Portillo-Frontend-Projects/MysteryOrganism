@@ -45,11 +45,28 @@ let pAequorFactory = (orgNum, dna) => {
       }
       commonBases = (commonBases / this.dna.length) * 100;
       return `Specimen #${this.orgNum} and specimen #${otherOrg.orgNum} have ${commonBases.toFixed(2)}% DNA in common`;
+    },
+    willLikelySurvive(){
+      let numOfCG = 0;
+      
+      for (let i = 0; i < dna.length; i++){
+        if (dna[i] === 'C' || dna[i] === 'G'){
+          numOfCG += 1;
+        }
+      }
+
+      if (numOfCG / this.dna.length >= 0.6){
+        return true;
+      } else {
+        return false;
+      }
     }
   }
 }
 
 //console.log(pAequorFactory(1, mockUpStrand()).mutate());
 
-console.log(pAequorFactory(1, mockUpStrand()).compareDNA(pAequorFactory(2, mockUpStrand())));
+//console.log(pAequorFactory(1, mockUpStrand()).compareDNA(pAequorFactory(2, mockUpStrand())));
+
+console.log(pAequorFactory(1, mockUpStrand()).willLikelySurvive());
 
