@@ -60,6 +60,30 @@ let pAequorFactory = (orgNum, dna) => {
       } else {
         return false;
       }
+    },
+    complementStrand(){
+      let compStrand = [];
+
+      for (let i = 0; i < this.dna.length; i++){
+        switch (this.dna[i]) {
+          case 'A':
+            compStrand.push('T');
+            break;
+          case 'T':
+            compStrand.push('A');
+            break;
+          case 'C':
+            compStrand.push('G');
+            break;
+          case 'G':
+            compStrand.push('C');
+            break;
+          default:
+            compStrand.push('error');
+        }
+      }
+      console.log(dna);
+      return compStrand;
     }
   }
 }
@@ -69,6 +93,8 @@ let pAequorFactory = (orgNum, dna) => {
 //console.log(pAequorFactory(1, mockUpStrand()).compareDNA(pAequorFactory(2, mockUpStrand())));
 
 //console.log(pAequorFactory(1, mockUpStrand()).willLikelySurvive());
+
+//console.log(pAequorFactory(1, mockUpStrand()).complementStrand())
 
 const fittestAequor = [];
 let orgNumCounter = 1;
@@ -81,7 +107,5 @@ while (fittestAequor.length < 30) {
   orgNumCounter++;
 }
 
-console.log(fittestAequor);
-
-
+//console.log(fittestAequor);
 
